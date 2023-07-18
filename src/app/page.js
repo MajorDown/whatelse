@@ -117,15 +117,17 @@ export default function Home() {
       <main>
         <section id="projects">
           <h2>Sur quel projet bossez-vous aujourd'hui ?</h2>
-          {whatelseProjects.map((project) => (
-            <button
-              key={project.name}
-              onClick={(e) => handleChangeSelectedProject(e, project)}
-            >
-              {project.name}
-            </button>
-          ))}
-          <div>
+          <div id="projectsList">
+            {whatelseProjects.map((project) => (
+              <button
+                key={project.name}
+                onClick={(e) => handleChangeSelectedProject(e, project)}
+              >
+                {project.name}
+              </button>
+            ))}
+          </div>
+          <div id="projectCreation">
             <p className="guideLine">
               Un nouveau projet en tête ? donnez-lui un nom :
             </p>
@@ -133,6 +135,7 @@ export default function Home() {
               type="text"
               name="projectName"
               id="projectName"
+              placeholder="nom du projet"
               value={projectName}
               onChange={(e) => {
                 handleChangeProjectName(e);
@@ -156,8 +159,8 @@ export default function Home() {
                   X
                 </button>
               </h2>
+              <p className="guideLine">ajouter un item :</p>
               <form onSubmit={handleAddTask}>
-                <p className="guideLine">ajouter un item :</p>
                 <input
                   type="text"
                   name="item"
@@ -176,13 +179,13 @@ export default function Home() {
                   <option value="blue">Bleu</option>
                   <option value="yellow">Jaune</option>
                 </select>
-                <button type="submit">Ajouter</button>
+                <input type="submit" value="Ajouter" />
               </form>
               <ul>
                 {selectedProject.list.map((task) => (
                   <li key={task.item}>
                     <p>{task.item}</p>
-                    <div>
+                    <div className="checkerBtn">
                       <input
                         type="checkbox"
                         name="done"

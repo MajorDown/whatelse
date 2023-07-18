@@ -10,16 +10,15 @@
 }
 
 :root {
-  --color1: darkgrey;
-  --color2: coral;
-  --color3: brown;
-  --color4: midnightblue;
+  --color1: rgb(210, 210, 210);
+  --color2: rgb(226, 194, 162);
+  --color3: rgb(120, 61, 2);
+  --color4: rgb(101, 38, 38);
   --font1: 'Neucha', cursive;
   --font2: 'Sniglet', cursive;
-  --font3: ;
-  --sizeTitle: 2vw;
-  --sizeSubTitle: 1.5vw;
-  --sizeText: 1vw;
+  --sizeTitle: 40px;
+  --sizeSubTitle: 12px;
+  --sizeText: 15px;
   --radius: 10px;
   --maxAppWidth: 768px;
 }
