@@ -10,16 +10,20 @@
 }
 
 :root {
-  --color1: rgb(210, 210, 210);
-  --color2: rgb(226, 194, 162);
-  --color3: rgb(120, 61, 2);
-  --color4: rgb(101, 38, 38);
+  --color1: rgb(227, 227, 227);
+  --color2: rgb(212, 164, 98);
+  --color3: rgb(69, 40, 0);
+  --color4: rgb(71, 0, 15);
+  --red: rgb(254, 148, 182);
+  --blue: rgb(148, 182, 254);
+  --yellow: rgb(242, 254, 148);
+  --green: rgb(148, 254, 182);
   --font1: 'Neucha', cursive;
   --font2: 'Sniglet', cursive;
   --sizeTitle: 40px;
   --sizeSubTitle: 12px;
   --sizeText: 15px;
-  --radius: 10px;
+  --radius: 5px;
   --maxAppWidth: 768px;
 }
 

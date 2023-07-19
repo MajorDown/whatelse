@@ -90,7 +90,7 @@ select {
 
 .checkerBtn {
     width: 50px;
-    height: 25px;
+    height: 27px;
     margin: 0 5px;
     background-color: var(--color3);
     padding: 1px 5px;
@@ -98,11 +98,12 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color1);
     gap: 5px;
 }
 
 button.suppressorBtn {
-    color: var(--color2);
+    color: var(--color1);
     background: var(--color4);
     border: solid var(--color3) 1px;
     width: 30px;
@@ -122,6 +123,22 @@ li {
     border: solid 1px var(--color3);
     border-radius: var(--radius);
     align-items: center;
+}
+
+.red {
+    background: var(--red);
+}
+
+.yellow {
+    background: var(--yellow);
+}
+
+.blue {
+    background: var(--blue);
+}
+
+.green {
+    background: var(--green);
 }
 
 li p {

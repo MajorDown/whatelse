@@ -150,64 +150,65 @@ export default function Home() {
             </button>
           </div>
         </section>
-        <section id="tasks">
-          {selectedProject && (
-            <>
-              <h2>
-                Projet : "{selectedProject.name}"
-                <button className="suppressorBtn" onClick={handleDeleteProject}>
-                  X
-                </button>
-              </h2>
-              <p className="guideLine">ajouter un item :</p>
-              <form onSubmit={handleAddTask}>
-                <input
-                  type="text"
-                  name="item"
-                  value={newTask.item}
-                  onChange={handleChangeNewItem}
-                  placeholder="Nom de l'item"
-                  required
-                />
-                <select
-                  name="color"
-                  value={newTask.color}
-                  onChange={handleChangeNewItem}
-                >
-                  <option value="red">Rouge</option>
-                  <option value="green">Vert</option>
-                  <option value="blue">Bleu</option>
-                  <option value="yellow">Jaune</option>
-                </select>
-                <input type="submit" value="Ajouter" />
-              </form>
-              <ul>
-                {selectedProject.list.map((task) => (
-                  <li key={task.item}>
-                    <p>{task.item}</p>
-                    <div className="checkerBtn">
-                      <input
-                        type="checkbox"
-                        name="done"
-                        onChange={(e) => handleCheck(e, task)}
-                        checked={task.done}
-                      />
-                      <p>ok</p>
-                    </div>
-                    <button
-                      className="suppressorBtn"
-                      onClick={(e) => handleDeleteItem(e, task)}
-                    >
-                      X
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </section>
+        {selectedProject && (
+          <section id="tasks">
+            <h2>
+              Projet : "{selectedProject.name}"
+              <button className="suppressorBtn" onClick={handleDeleteProject}>
+                X
+              </button>
+            </h2>
+            <p className="guideLine">ajouter un item :</p>
+            <form onSubmit={handleAddTask}>
+              <input
+                type="text"
+                name="item"
+                value={newTask.item}
+                onChange={handleChangeNewItem}
+                placeholder="Nom de l'item"
+                required
+              />
+              <select
+                name="color"
+                value={newTask.color}
+                onChange={handleChangeNewItem}
+              >
+                <option value="red">rouge</option>
+                <option value="green">vert</option>
+                <option value="blue">bleu</option>
+                <option value="yellow">jaune</option>
+              </select>
+              <input type="submit" value="Ajouter" />
+            </form>
+            <ul>
+              {selectedProject.list.map((task) => (
+                <li key={task.item} className={task.color}>
+                  <p>{task.item}</p>
+                  <div className="checkerBtn">
+                    <input
+                      type="checkbox"
+                      name="done"
+                      onChange={(e) => handleCheck(e, task)}
+                      checked={task.done}
+                    />
+                    <p>ok</p>
+                  </div>
+                  <button
+                    className="suppressorBtn"
+                    onClick={(e) => handleDeleteItem(e, task)}
+                  >
+                    X
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
-      <footer>footer</footer>
+      <footer>
+        <p> © Copyright 2023 - Tout droit réservé</p>
+        <p>développé par MajorDown</p>
+      </footer>
     </>
   );
 }
