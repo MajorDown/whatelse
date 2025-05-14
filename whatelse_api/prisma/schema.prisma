@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id
+  name          String
+  email         String         @unique
+  password      String
+  projects      Project[]      @relation("ProjectCreation")
+  contributions Contribution[]
+}
+
+model Contribution {
+  id        String  @id
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String
+
+  @@unique([userId, projectId]) // un seul lien possible entre un user et un projet
+}
+
+model Project {
+  id           String         @id
+  title        String
+  description  String?
+  status       String         @default("pending")
+  creator      User           @relation("ProjectCreation", fields: [creatorId], references: [id])
+  creatorId    String
+  contributors Contribution[]
+  tasks        Task[]
+  statusList   Json
+}
+
+model Task {
+  id          String  @id
+  title       String
+  description String?
+  status      String  @default("pending")
+  project     Project @relation(fields: [projectId], references: [id])
+  projectId   String
+}
