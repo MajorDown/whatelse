@@ -2,7 +2,7 @@ export type Project = {
     id: string;
     title: string;
     description?: string;
-    status: 'pending' | 'in_progress' | 'completed';
+    status: 'pending' | 'completed';
     creatorId: string;
     statusList: string[]; // liste des statuts autorisés
 }

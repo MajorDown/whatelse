@@ -15,3 +15,9 @@ export type ConnectedUser = {
   email: string;
   token: string;
 };
+
+export type PublicUser = {
+  id: string;
+  name: string;
+  email: string;
+};

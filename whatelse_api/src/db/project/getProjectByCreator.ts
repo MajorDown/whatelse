@@ -12,6 +12,10 @@ async function getProjectsByCreator(creatorId: string): Promise<Project[]> {
     const projects = await prisma.project.findMany({
         where: { creatorId },
     });
+    if (!projects || projects.length === 0) {
+        console.log(`getProjectsByCreator ~> Aucun projet trouvé pour l'utilisateur : ${creatorId}`);
+        return [];
+    }
 
     return projects.map(p => ({
         id: p.id,
