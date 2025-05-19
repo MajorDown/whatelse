@@ -3,6 +3,7 @@ import { CreateProjectDto } from './dto/create-project.dto';
 import createProject from '@/src/db/project/createProject';
 import { CreateProjectInput, Project } from '@/src/db/project/project.types';
 import getProjectsByCreator from '@/src/db/project/getProjectByCreator';
+import deleteProjectById from '@/src/db/project/deleteProjectById';
 
 @Injectable()
 export class ProjectService {
@@ -16,5 +17,9 @@ export class ProjectService {
 
     async getByCreator(creatorId: string): Promise<Project[]> {
         return getProjectsByCreator(creatorId);
+    }
+
+    async deleteById(id: string): Promise<boolean> {
+        return deleteProjectById(id);
     }
 }
