@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { TokenManager } from 'utils/TokenManager';
+import TokenManager from 'utils/TokenManager';
 
 /**
  * @description Middleware d'authentification

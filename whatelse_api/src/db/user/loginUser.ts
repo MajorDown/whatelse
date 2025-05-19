@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { PasswordManager } from 'utils/PasswordManager';
-import { TokenManager } from 'utils/TokenManager';
+import { PasswordManager } from '@/utils/PasswordManager';
+import { TokenManager } from '@/utils/TokenManager';
 import {LoginUserInput, ConnectedUser} from './user.types';
 
 const prisma = new PrismaClient();

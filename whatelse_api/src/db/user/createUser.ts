@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import generateId from 'utils/generateId';
-import { PasswordManager } from 'utils/PasswordManager';
+import generateId from '@/utils/generateId';
+import { PasswordManager } from '@/utils/PasswordManager';
 
 const prisma = new PrismaClient();
 
