@@ -31,6 +31,15 @@ export class ProjectController {
     return this.projectService.getByCreator(creatorId);
   }
 
+  @Get('byContributions')
+  @UseGuards(AuthGuard)
+  async getByContribution(@Req() req: Request) {
+    const token = req.headers['authorization']?.split(' ')[1];
+    const payload = TokenManager.check(token!);
+    const userId = payload!.id;
+    return this.projectService.getByContribution(userId);
+  }
+
   @Delete(':id')
   @UseGuards(AuthGuard)
   async delete(@Param('id') projectId: string, @Req() req: Request) {
