@@ -1,8 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { TaskService } from './task.service';
-import { CreateTaskInput, Task } from '@/src/db/task/task.types';
+import { Task } from '@/src/db/task/task.types';
 import { AuthGuard } from '../middleware/auth.guard';
 import { RoleGuard } from '../middleware/role.guard';
+
+import { CreateTaskDto } from './dto/create-task.dto';
+import { UpdateTaskContentDto } from './dto/update-task-content.dto';
+import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 
 @Controller('task')
 @UseGuards(AuthGuard, RoleGuard(['creator', 'contributor']))
@@ -10,8 +14,8 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
-  create(@Body() data: CreateTaskInput): Promise<Task | null> {
-    return this.taskService.create(data);
+  create(@Body() dto: CreateTaskDto): Promise<Task | null> {
+    return this.taskService.create(dto);
   }
 
   @Get('by-project/:projectId')
@@ -22,17 +26,17 @@ export class TaskController {
   @Patch('update-content/:id')
   updateContent(
     @Param('id') taskId: string,
-    @Body() data: { title: string; description?: string }
+    @Body() dto: UpdateTaskContentDto
   ): Promise<Task | null> {
-    return this.taskService.updateContent(taskId, data);
+    return this.taskService.updateContent(taskId, dto);
   }
 
   @Patch('update-status/:id')
   updateStatus(
     @Param('id') taskId: string,
-    @Body() data: { status: string }
+    @Body() dto: UpdateTaskStatusDto
   ): Promise<Task | null> {
-    return this.taskService.updateStatus(taskId, data.status);
+    return this.taskService.updateStatus(taskId, dto.status);
   }
 
   @Delete(':id')
